@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="UI for IOT platform">
+        <meta name="author" content="galaxy">
+		<title>Welcome to Galaxy</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<!-- Material Design fonts -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+					
+		<!-- customstyle -->	  
+		<link rel="stylesheet" type="text/css" href="/assets/css/gapp.css" />	
+		<link rel="stylesheet" type="text/css" href="/assets/css/animate.css" />	
+		<link rel="stylesheet" type="text/css" href="/assets/css/ripples.min.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/leftmenu-component.css" />
+		<!-- BEGIN GLOBAL MANDATORY STYLES -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/simple-line-icons/simple-line-icons.min.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
+
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/uniform/css/uniform.default.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css" />
+		
+		
+		<link rel="stylesheet" type="text/css" id="style_components" href="/assets/css/components-md.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/plugins-md.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/layout.css" />	
+		<link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />		
+		
+		<!-- KendoUI Styles -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/KendoUI/kendo.common.min.css"  />
+		<link rel="stylesheet" type="text/css" href="/assets/css/KendoUI/kendo.material.css"  />
+		<!--<link rel="stylesheet" type="text/css" href="/assets/css/KendoUI/kendo.custom.css"  />-->
+		
+		<!-- BEGIN CUSTOM THEME STYLES -->
+		<link rel="stylesheet" type="text/css" id="style_color" href="/assets/css/darkblue.css" />
+		
+		<style type="text/css">
+
+			.orange{ background:#00aeef; color:#fff;}
+		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			color:    #909;
+		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   color:    #909;
+		   opacity:  1;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   color:    #909;
+		   opacity:  1;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   color:    #909;
+		}
+		.k-invalid-msg code
+		{
+			background-color: transparent;
+			border: 0px;
+			color: #FF8080;
+		}
+		.has-error .form-control,
+		.has-error .form-control:focus{
+		border-color: #fff;
+		}
+
+		.input-icon > i{
+			font-size: 18px!important;
+			color:#fff;
+			}
+		</style>
+		
+</head>
+
+<body class="outer-wrapper login">
+	<div class="se-pre-con"></div>
+	
+	<!-- BEGIN LOGIN -->
+	<div class="content panel animated pulse col-xs-12 col-md-5 col-sm-8 col-lg-4" style="margin: 5% auto 20px 9%;" id="gapp-login-container">
+		 <div class="logo">
+			<a href="/"><img id="loginlogo" src="/assets/images/login/galaxy-logo.png" alt=""/>	</a>
+		</div>	
+		<!-- BEGIN LOGIN FORM -->
+		
+		<div id="ga-login bs-component"> 							
+			<div class="panel-danger">							
+				<div class="panel-body">									
+					<% if (message != '') { %>
+					<div class="alert alert-danger display-hide" style="display: block;width: 86%;padding: 10px;">
+					 <a href="#" class="close" data-dismiss="alert">&times;</a>
+						<span><%=message%></span>
+					</div>
+					<% } %>
+					
+					<form name="gapp-signin-form" id="gapp-signin-form" class="form-horizontal" action="login" method="post" role="login" autocomplete="off" >
+						<fieldset>
+						
+						<section class="form-group login-inputbox col-md-12">
+							<div class="input-icon">
+										<i class="fa fa-user"></i>
+										<input type="text" class="form-control placeholder-no-fix" name="username" id="username" placeholder="UserName" required="true" data-required-msg="Please enter username" autofocus tabindex="1" value="pcsadmin@pcs" />
+							</div>
+						</section>
+						
+						
+						<section class="form-group login-inputbox col-md-12">
+								<div class="input-icon">
+									<i class="fa fa-lock"></i>
+									<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="true" data-required-msg="Please enter password" tabindex="2" value="password"/>
+								</div>
+						</section>
+						
+
+							<section class="form-group col-md-12" style="text-align:center">
+									<div >														  
+									  <button type="submit" class="btn btn-raised orange btn-block" name="gapp-signin-submit" id="gapp-signin-submit" onclick="return FnLoginSubmit()" tabindex="4" disabled="disabled">Sign In <i class="m-icon-swapright m-icon-white"></i></button>
+									</div>
+							 </section>
+						
+						<!-- BEGIN PUBLISH CHECKBOX -->	
+							<div class="form-group form-md-checkboxes col-md-12">	
+							
+								<div class="md-checkbox-inline col-md-6 text-left"  >								
+									<div class="md-checkbox">
+										<input type="checkbox" id="remembeMe" name="remembeMe" class="md-check "   tabindex="13"  >
+										<label for="remembeMe" style="font-size: 13px;  color: #fff;">
+											<span></span>
+											<span class="check"></span>
+											<span class="box" style="border-color:#fff"></span>
+											Remember me
+										</label>
+									</div>
+								</div> 
+								
+								<div class="col-md-6 text-right">
+									<a href="Javascript:void(0)" id="gapp-forgotpassword-link" style="color:#fff"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+								</div>
+							</div>						
+							<!--END  PUBLISH CHECKBOX -->
+						
+							
+							
+							
+						</fieldset>
+						
+					</form>
+				</div>
+			</div>
+		</div>		
+		<!-- END LOGIN FORM -->
+		
+		</div>
+	<!-- END LOGIN -->
+
+	<!-- BEGIN FORGOT PASSWORD FORM --> 
+		<br/>
+		
+	<div class="content panel hide animated pulse col-xs-12 col-md-5 col-sm-8 col-lg-4" style="margin: 5% auto 20px 9%;"  id="gapp-forgotpassword-container">
+	 <div class="logo">
+			<a href="/"><img id="loginlogo" src="/assets/images/login/galaxy-logo.png" alt=""/>	</a>
+		</div>	
+		<div id="ga-login bs-component">
+			<div class="panel-danger">							
+				<div class="panel-body" style="padding-top:5px;">
+					<form class="form-horizontal" name="gapp-forgorpassword-form" id="gapp-forgorpassword-form" style="display: block;" autocomplete="off">
+						<fieldset>
+							<h3 style="color: #fff;margin-top:0px;font-size:18px;">Forgot Password</h3>
+							<p style="color: #fff;font-size: 12px;">Enter your Username and E-mail address below to reset your password.</p>
+							<p id="forgot_notification" style="color: #fff;" class="col-md-11"></p>
+							
+							<section class="form-group login-inputbox col-md-12">
+									<div class="input-icon">
+										<i class="fa fa-user"></i>
+										<input class="form-control placeholder-no-fix" type="text" placeholder="UserName" name="forgotuserName" id="forgotuserName" required="true" data-required-msg="Please enter username" />
+									</div>
+							</section>
+							<section class="form-group login-inputbox col-md-12">
+									<div class="input-icon">
+										<i class="fa fa-envelope"></i>
+										<input class="form-control placeholder-no-fix" type="email" placeholder="Email" name="forgotemailId" id="forgotemailId" required="true" data-required-msg="Please enter emailid" data-email-msg="Please enter valid emailid" />
+									</div>
+							</section>
+							<section class="form-group col-md-12">
+								<div class="form-actions">
+									<button type="button" class="btn" name="gapp-forgotpass-cancel" id="gapp-forgotpass-cancel">
+									<i class="m-icon-swapleft"></i> Back </button>
+									<button type="button" class="btn blue pull-right" name="gapp-forgotpass-submit" id="gapp-forgotpass-submit" onclick="return FnForgotPassword()">
+									Submit <i class="m-icon-swapright m-icon-white"></i>
+									</button>
+								</div>
+							</section>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<!-- END FORGOT PASSWORD FORM -->
+	
+	<footer id="myfooter" class="white opa-text"> &copy; 2016 Galaxy, Pacific Controls.</footer>
+	
+	<style>
+
+.k-widget.k-notification.k-notification-success, .k-widget.k-notification.k-notification-danger {background: none; border:0}
+.GBL_loading{
+position: absolute;
+display: flex;
+display: -webkit-flex;
+ display: -webkit-box; 
+-webkit-align-items: center;
+-webkit-box-align:center;
+align-items: center;
+-webkit-justify-content: center;
+-webkit-box-pack: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+background: rgba(247,247,247,0.5);
+z-index: 99999;
+top:0;
+}
+#GBL_loading,#alertModal{display:none}
+.page-container{visibility:hidden}
+.glyphicon-log-out{font-size:17px;}
+i.fa.fa-exclamation-triangle {
+    font-size: 32px;
+    margin: 28px 0px;
+}
+</style>
+
+<span id="notificationMsg"></span>
+
+<!--  start cancel model popup  -->
+	
+<div id="GBLModalcancel" class="modal fade" tabindex="-1" data-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirm</h4>
+			</div>
+			<div class="modal-body">
+				<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+					<div class="row">
+						<div class="col-md-12">														
+							<p>Are you sure you want to leave this page?</p>							
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<input type="hidden" name="hiddencancelFrm" id="hiddencancelFrm" value=""  />
+				<input type="hidden" name="hiddencancel" id="hiddencancel" value=""  />
+				<button type="button" data-dismiss="modal" class="btn  btn-raised" onclick="FnConfirmNo()"><i class="icon-close icons" aria-hidden="true"></i>No</button>
+				<button type="button"  id="submitBackBtn" class="btn btn-danger" value="yes" onclick="FnConfirmYes()"><i class="icon-check icons" aria-hidden="true"></i>Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End cancel model popup  -->
+		
+<!--  common modal dialog box  -->
+
+<div id="alertModal" class="modal fade" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Alert</h4>
+			</div>
+			<div class="modal-body">
+				<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+					<div class="row">
+						<div class="col-md-12">														
+							<p class="modalMessage">Error</p>							
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+			<button type="button" data-dismiss="modal" aria-hidden="true" class="btn  btn-raised"><i class="icon-check icons" aria-hidden="true"></i>Ok</button>
+				<div class="modal-footer">	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End cancel model popup  -->
+
+<!-- Token Expired Notification-->
+<div class="modal fade" id="tokenexpiremodal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"> <i class="fa fa-frown-o"></i> &nbsp; Notification</h4>
+			</div>
+			<div class="modal-body" style="min-height:220px">
+				<div class="row">
+				<div id="tokenexpiremodal-icon" clas="bg-info" style="margin:0 auto; text-align:center">
+					<i class="fa fa-exclamation-triangle " ></i>
+				</div>
+				
+				<div id="tokenexpiremodal-content"></div>
+				<div id="tokenexpiremodal-text"> Please re-login to continue with the appication. if you have unsaved changes, unfortunately they will not be saved.</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div id="GBL_loading">
+	<div class="GBL_loading" >
+			<div style="max-width:50%"><img src="/assets/images/103.GIF"></div>
+	</div>
+</div>
+	
+<script id="errorTemplate" type="text/x-kendo-template">
+	<div class="alert alert-danger">
+		<strong> <img  src="/assets/images/error-icon.png" /></strong>  #= message #		
+	</div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-success">
+		<strong> <img  src="/assets/images/success-icon.png" /></strong>  #= message #
+	</div>
+</script>
+
+<script id="infoTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-info" role="alert">
+		<strong> <img  src="/assets/images/info-icon.png" /></strong>  #= message #
+	</div>  	
+</script>
+
+
+<script type='text/javascript' src="/assets/plugins/jquery.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/bootstrap/js/tooltip.js"></script>
+<script type='text/javascript' src="/assets/js/metroJs.min.js"></script>
+<script type='text/javascript' src="/assets/js/material.min.js"></script>
+<script type='text/javascript' src="/assets/js/ripples.min.js"></script>
+<script type='text/javascript' src="/assets/js/modernizr.js"></script>
+<script type="text/javascript" src="/assets/js/KendoUI/kendo.all.min.js"></script>
+<script type="text/javascript" src="/assets/js/KendoUI/kendo.custom.js"></script>
+
+<script type='text/javascript' src="/assets/js/classie.js"></script>
+<script type='text/javascript' src="/assets/js/gnmenu.js"></script>
+
+<script type='text/javascript' src="/assets/js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/assets/js/commonFunctions.js"></script>
+<script type='text/javascript'>
+	var GblAppContextPath = '';
+	var GblAppRootPath = '';
+	var GblAppTheme = '';
+	
+	if($('#gn-menu').length > 0){
+		new gnMenu( document.getElementById( 'gn-menu' ) );
+	}
+	$(document).ready(function(){
+		$('.animate-panel').animatePanel();
+	 
+		$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+
+	});
+
+	function randOrd() {
+		return (Math.round(Math.random())-0.5); 
+	} 
+	$.material.init();
+		
+	
+	if ( navigator.userAgent.indexOf('Firefox') >= 0 || navigator.userAgent.indexOf('Chrome')>= 0 || navigator.userAgent.indexOf('Safari')>= 0) {
+		$(window).load(function() {
+					var klasses = [ 'pt-page-scaleUpDown'];
+					klasses.sort( randOrd );
+					$('.page-container').each(function(i, val) {
+						$(this).addClass(klasses[i]);
+					});
+			$(".page-container").css({"visibility":"visible"});
+			$(".se-pre-con").fadeOut("fast");
+		});
+	} else{
+	$(".page-container").css({"visibility":"visible"});
+		$(".se-pre-con").fadeOut("fast");
+	}
+	
+	initNotifications();
+	
+	// after successmessage delay time to redirect
+	var GBLDelayTime = 1000;
+	
+	var GBLcancel = 0;
+	function triggerFormClick(){
+		GBLcancel = 1;
+	}
+	
+	var formClicked = $("form").on("click", "input,select,textarea, div.k-multiselect",triggerFormClick);
+	var gridClicked = $("body").on("click", "input,select,textarea, div.k-multiselect",triggerFormClick);
+	var formSelected = $("form").on("change", "input,select,textarea, div.k-multiselect", triggerFormClick);
+
+	function FNLoading(){
+		var GBL_loading;
+		GBL_loading += "<div class='GBL_loading'>";
+		GBL_loading += "<div style='max-width:50%'><img src='/assets/images/loading32x32.gif'></div>";
+		GBL_loading += "</div>";
+	}
+
+	function FnConfirmYes(){
+		var gethiddenFrm = $("#hiddencancelFrm").val();
+		var gethiddenURL = $("#hiddencancel").val();
+		if(gethiddenFrm != ''){
+			$('#'+gethiddenFrm).submit();
+		} else {
+			FnRedirect(gethiddenURL,1000);
+		}
+	}
+	
+	function FnConfirmNo(){
+		$("#GBLModalcancel").modal('hide');	
+	}
+	
+	$.fn['animatePanel'] = function() {
+		 var element = $(this);
+		 var effect = $(this).data('effect');
+		 var delay = $(this).data('delay');
+		 var child = $(this).data('child');
+
+		 // Set default values for attrs
+		 if(!effect) { effect = 'zoomIn'};
+		 if(!delay) { delay = 0.5 } else { delay = delay / 10 };
+		 if(!child) { child = 'section.dc_gadgetoutercontainer .animateZoom'} else {child = "." + child};
+
+		 //Set defaul values for start animation and delay
+		 var startAnimation = 0;
+		 var start = Math.abs(delay) + startAnimation;
+
+
+		 var panel = element.find(child);
+		 panel.addClass('opacity-0');
+
+		 // Get all elements and add effect class
+		 panel = element.find(child);
+		 panel.addClass('animated-panel').addClass(effect);
+		 // Add delay for each child elements
+		 panel.each(function (i, elm) {
+
+			 start += delay;
+			 var rounded = Math.round(start * 10) / 10;
+			 $(elm).css('animation-delay', rounded + 's')
+			 // Remove opacity 0 after finish
+			 $(elm).removeClass('opacity-0');
+		 });
+	}
+
+	$(function(){
+		jQuery('img.svg').each(function(){
+			var $img = jQuery(this);
+			var imgID = $img.attr('id');
+			var imgClass = $img.attr('class');
+			var imgURL = $img.attr('src');
+		
+			jQuery.get(imgURL, function(data) {
+				// Get the SVG tag, ignore the rest
+				var $svg = jQuery(data).find('svg');
+		
+				// Add replaced image's ID to the new SVG
+				if(typeof imgID !== 'undefined') {
+					$svg = $svg.attr('id', imgID);
+				}
+				// Add replaced image's classes to the new SVG
+				if(typeof imgClass !== 'undefined') {
+					$svg = $svg.attr('class', imgClass+' replaced-svg');
+				}
+		
+				// Remove any invalid XML tags as per http://validator.w3.org
+				$svg = $svg.removeAttr('xmlns:a');
+				
+				// Check if the viewport is set, else we gonna set it if we can.
+				if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+					$svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+				}
+		
+				// Replace image with new SVG
+				$img.replaceWith($svg);
+		
+			}, 'xml');
+		
+		});
+		
+				
+	});
+
+</script>
+<script type="text/javascript">
+	var VarForgotPasswordUrl = '<%=APICONF.users.forgotpassword%>';
+	var VarAPPServerPath = '';
+	var VarAppDomain = '';
+</script>
+<script type="text/javascript" src="/assets/js/login.js"></script>   
+	
+</body>
+</html>

@@ -1,0 +1,180 @@
+		<% include ../portal-header %>
+		<style type="text/css">
+
+			.orange{ background:#00aeef; color:#fff;}
+		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+			color:    #909;
+		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   color:    #909;
+		   opacity:  1;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   color:    #909;
+		   opacity:  1;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   color:    #909;
+		}
+		.k-invalid-msg code
+		{
+			background-color: transparent;
+			border: 0px;
+			color: #FF8080;
+		}
+		.has-error .form-control,
+		.has-error .form-control:focus{
+		border-color: #fff;
+		}
+
+		.input-icon > i{
+			font-size: 18px!important;
+			color:#fff;
+			}
+		</style>
+		<style type="text/css">
+		#grid-view .k-grid-header .k-header {
+			background-color: #f44336;
+		}
+
+		#grid-view .k-header a.k-link, .k-grid-header th{
+			color: #000 !important;
+		}
+
+		.alert-danger {
+			background-color: #f2dede;
+			border-color: #ebccd1;
+			color: #a94442;
+		}
+	</style>
+	</head>
+<body class="page-md page-header-fixed page-quick-sidebar-over-content page-footer-fixed  page-full-width">
+	<div class="se-pre-con"></div>
+	<% include ../global-header %>
+	
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="gapp-header">
+				<% include ../leftnavigation %>
+				<h3 class="page-title">	Client Management  </h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li>
+							<i class="fa fa-home"></i>
+							<a href="Javascript:void(0)" onclick="FnBreadCrumbHome()">Home</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						<li>
+							<a href="Javascript:void(0)">Clients</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="page-content">
+				<!-- BEGIN PAGE CONTENT-->
+					<div class="row">
+						<div class="col-md-12">	
+											
+						
+							<div class="portlet light bordered">
+								<div class="portlet-title">
+									<div class="caption font-red-sunglo">
+										<i class="pageheadericon pageheader-clienticon"></i>
+										<span class="caption-subject bold uppercase">Clients</span>
+									</div>
+									<div class="actions">
+										
+										<div class="btn-group">
+											<a href="Javascript:void(0)" class="btn green" id="gapp-createadmin-btn" onclick="FnCreateClientAdmin()" disabled> +  Create Admin</a>						
+										</div>
+										
+										<div class="btn-group">
+											<a href="/clients/create" class="btn green"> +  Create Client</a>						
+										</div>
+										
+									</div>
+								</div>
+								<div class="portlet-body">
+									<div id="gapp-clients-list"></div>
+
+									<form id="gapp-client-view" role="form" action="/clients/view" name="gapp-client-view" method="post">
+										<input type="hidden" id="client_id" name="client_id" />
+									</form>
+									<form id="gapp-client-sendemail" role="form" action="/clients/sendemail" name="gapp-client-sendemail" method="post">
+										<input type="hidden" id="client_domain" name="client_domain" />
+									</form>
+									<form id="gapp-client-home" role="form" action="/clienthome" name="gapp-client-home" method="post">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="createAdminNotification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Create admin</h4>
+		  </div>
+		  <div class="modal-body">
+						 Please select a row from the grid to create admin user
+		  </div>
+		  <div class="modal-footer">     
+				   <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">OK</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<!----  client confirmation model popup  --->	
+	<div id="clientConfirmation" class="modal fade" tabindex="-1" aria-hidden="true">
+	
+		<div class="modal-dialog modal-xs">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+					<h4 class="modal-title">Confirm</h4>
+				</div>
+				<div class="modal-body">
+					<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+						<div class="row">
+							<div class="col-md-12">														
+								<p>Already you are in Client session.Do you want to continue?</p>							
+							</div>					
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" data-dismiss="modal" class="btn  btn-raised" onclick="FnClientConfirmNo()"><i class="icon-close icons" aria-hidden="true"></i>No</button>
+					<button type="button"  id="submitBackBtn" class="btn btn-raised btn-danger" value="yes" onclick="FnClientConfirmYes()"><i class="icon-check icons" aria-hidden="true"></i>Yes</button>
+					<div class="modal-footer">	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!----  client confirmation model popup  --->
+	
+	<% include ../global-footer %>
+	<% include ../portal-footer %>
+	
+<script type="text/javascript">
+	var VarListClientsUrl = '<%=APICONF.clients.list%>';
+	var ObjPageAccess = '';
+</script>
+<script type="text/javascript" src="/assets/js/clients/list.js"></script>
+<script src="/assets/js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	
+</body>
+</html>

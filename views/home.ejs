@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="UI for IOT platform">
+        <meta name="author" content="galaxy app">
+		<title>Galaxy App</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/animate.css" />			
+		<link rel="stylesheet" type="text/css" href="/assets/css/gapp.css" />  
+		<link rel="stylesheet" type="text/css" href="/assets/css/jquery-custom-scrollbar/jquery.mCustomScrollbar.css" />  
+		<link rel="stylesheet" type="text/css" href="/assets/css/home.css" />	
+		<style>
+		.dynamicTile {
+    margin-top: 20px;
+}
+.tilescategoryGroup:before {
+    background: none transparent!important
+}
+.content-wrapper {
+    overflow: visible;
+    display: inline-block;
+    width: 95%;
+}
+#wrap div.col-md-4 {
+    padding: 5px;
+}
+.tilecaption {
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    font-size: 0.9vw;
+}
+@media (min-width: 768px) {
+    .tilecaption {
+        font-size: 14px;
+        font-size: 1.1vw;
+        padding-left: 10px!important;
+    }
+}
+@media (min-width: 368px) {
+    .tilecaption {
+        font-size: 14px;
+        font-size: 1.4vw;
+        padding-left: 10px!important;
+    }
+}
+@media (min-width: 992px) {
+    .tilecaption {
+        font-size: 14px;
+        font-size: 1vw;
+        padding-left: 3px!important;
+    }
+}
+@media (min-width: 1200px) {
+    .tilecaption {
+        font-size: 14px;
+        font-size: 0.9vw;
+        padding-left: 10px!important;
+    }
+}
+.tile-group {
+    margin-right: 0px;
+}
+.container-ss .tile_image {
+    border: 0px;
+}
+.tile_style aside {
+    padding-top: 2%;
+}
+@media (max-width: 1280px) and (min-width: 1024px),
+(max-height: 811px) {
+    .container-ss .tile_image {
+        width: 50%;
+    }
+}
+/*#wrap{overflow:auto}*/
+
+.tile_style,
+.tile_style aside {
+    height: auto;
+}
+.whitebar {
+    padding: 4px 0px;
+}
+.tile-group h3 {
+    padding-left: 3px;
+    color: #205081 !important;
+}
+		
+		</style>		
+	
+
+</head>
+<body class="outer-wrapper">
+	<div id="wrapper">
+		<header class="header">   
+			<section class="GAP_home">
+				<div class="col-md-8 col-xs-12">
+				<%
+				if(VarLogoImagePath != ''){
+				%>
+				<img class="img-responsive" src="<%=VarLogoImagePath%>" alt="logo" style="float: left;margin-right: 15px;height:46px;padding:3px 0px;"/>
+				<% } %>
+				
+				<h3 class="capitalize homeHeaderTxt"><%=VarTenantName%></h3></div>
+				<div class="col-md-4 col-xs-12"> 
+					<% include top-navigation %>
+				</div>
+			</section>
+		</header>
+		<section id="wrap">
+			
+			<div class="main-content dynamicTile pt-page-scaleUpDown pt-page-delay300">
+				<div class="content-wrapper tiles panorama-sections">
+			
+					<section class="tile-group four-wide first tilescategoryOne col-md-6">
+					<h3><strong>App</strong> Management</h3>
+						<div class="container-ss get-width">
+							<!-- Category 1 -->
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg1">
+										<a href="/clients/list">
+											<aside><img src="/assets/images/home/tiles/client-manage-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">Client Management</div>
+											<div class="tileactions">
+												<a href="/clients/add" data-toggle="tooltip" title="Create"><span class="home-plusicon"></span></a>
+												<a href="/clients/list" data-toggle="tooltip" title="List"><span class="home-menuicon"></span></a>
+											</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+
+							
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg2">
+										<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/users/list')">
+												<!-- Wrapper for slides -->
+														<aside><img src="/assets/images/home/tiles/user-manage-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">User Management</div>
+											<div class="tileactions">
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/users/add')" data-toggle="tooltip" title="Create"><span class="home-plusicon"></span></a>
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/users/list')" data-toggle="tooltip" title="List"><span class="home-menuicon"></span></a>
+											</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg3">
+										<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/device/list')">
+												<!-- Wrapper for slides -->
+														<aside><img src="/assets/images/home/tiles/device-manage-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">Device Management</div>
+											<div class="tileactions">
+												<a href="/device/create" data-toggle="tooltip" title="Create"><span class="home-plusicon"></span></a>
+												<a href="/device/list"  data-toggle="tooltip" title="List"><span class="home-menuicon"></span></a>
+											</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg4">
+										<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/roles/list')">
+												<!-- Wrapper for slides -->
+														<aside><img src="/assets/images/home/tiles/role-manage-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">Role Management</div>
+											<div class="tileactions">
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/roles/add')" data-toggle="tooltip" title="Create"><span class="home-plusicon"></span></a>
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/roles/list')" data-toggle="tooltip" title="List"><span class="home-menuicon"></span></a>
+											</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg11">
+										<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/device/info')">
+										<!-- Wrapper for slides -->
+										<aside><img src="/assets/images/home/tiles/device-status-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">Device Status</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
+								<div class="live-tile exclude tile" data-mode="none" data-bounce="true">
+								
+									<div class="tile_style ">
+									<section class="home-tilebg4">
+										<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/configurationTemplates/list')">
+												<!-- Wrapper for slides -->
+														<aside><img src="/assets/images/home/tiles/configuration-w.svg" class="tile_image hvr-grow-shadow img-responsive"/></aside>
+										</a>
+										<section class="tilecaptionbox whitebar">
+										<div class="tilecaption">Configuration Template</div>
+											<div class="tileactions">
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/configurationTemplates/add')" data-toggle="tooltip" title="Create"><span class="home-plusicon"></span></a>
+												<a href="Javascript:void(0)" onclick="FnNavigateTargetPage('/configurationTemplates/list')" data-toggle="tooltip" title="List"><span class="home-menuicon"></span></a>
+											</div>
+										</section>
+									</section>
+									</div>
+									
+								</div>
+							</div>
+							
+						</div>
+					</section>
+					<!-- End: Category 1 -->
+	
+				</div>
+
+			</div>			
+
+	
+		</section>
+
+		<div  id="myfooter" class="page-footer-inner">&copy; 2016 Galaxy, Pacific Controls.</div>
+	</div>
+	
+		
+</body>
+
+		
+	<script type='text/javascript' src="/assets/plugins/jquery.min.js"></script>
+	<script type='text/javascript' src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type='text/javascript' src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+	<script type='text/javascript' src="/assets/js/material.min.js"></script>
+	<script type='text/javascript' src="/assets/js/ripples.min.js"></script>
+	<script type='text/javascript' src="/assets/js/modernizr.js"></script>
+	<script type='text/javascript' src="/assets/js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type='text/javascript' src="/assets/js/home.js"></script>
+
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();   
+		});
+	</script>
+</body>
+</html>

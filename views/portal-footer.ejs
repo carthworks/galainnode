@@ -1,0 +1,296 @@
+<style>
+
+.k-widget.k-notification.k-notification-success, .k-widget.k-notification.k-notification-danger {background: none; border:0}
+.GBL_loading{
+position: absolute;
+display: flex;
+display: -webkit-flex;
+ display: -webkit-box; 
+-webkit-align-items: center;
+-webkit-box-align:center;
+align-items: center;
+-webkit-justify-content: center;
+-webkit-box-pack: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+background: rgba(247,247,247,0.5);
+z-index: 99999;
+top:0;
+}
+#GBL_loading,#alertModal{display:none}
+.page-container{visibility:hidden}
+.glyphicon-log-out{font-size:17px;}
+i.fa.fa-exclamation-triangle {
+    font-size: 32px;
+    margin: 28px 0px;
+}
+</style>
+
+<span id="notificationMsg"></span>
+
+<!--  start cancel model popup  -->
+	
+<div id="GBLModalcancel" class="modal fade" tabindex="-1" data-backdrop="static" aria-hidden="true">
+	<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirm</h4>
+			</div>
+			<div class="modal-body">
+				<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+					<div class="row">
+						<div class="col-md-12">														
+							<p>Are you sure you want to leave this page?</p>							
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<input type="hidden" name="hiddencancelFrm" id="hiddencancelFrm" value=""  />
+				<input type="hidden" name="hiddencancel" id="hiddencancel" value=""  />
+				<button type="button" data-dismiss="modal" class="btn  btn-raised" onclick="FnConfirmNo()"><i class="icon-close icons" aria-hidden="true"></i>No</button>
+				<button type="button"  id="submitBackBtn" class="btn btn-danger" value="yes" onclick="FnConfirmYes()"><i class="icon-check icons" aria-hidden="true"></i>Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End cancel model popup  -->
+		
+<!--  common modal dialog box  -->
+
+<div id="alertModal" class="modal fade" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Alert</h4>
+			</div>
+			<div class="modal-body">
+				<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+					<div class="row">
+						<div class="col-md-12">														
+							<p class="modalMessage">Error</p>							
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+			<button type="button" data-dismiss="modal" aria-hidden="true" class="btn  btn-raised"><i class="icon-check icons" aria-hidden="true"></i>Ok</button>
+				<div class="modal-footer">	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End cancel model popup  -->
+
+<!-- Token Expired Notification-->
+<div class="modal fade" id="tokenexpiremodal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"> <i class="fa fa-frown-o"></i> &nbsp; Notification</h4>
+			</div>
+			<div class="modal-body" style="min-height:220px">
+				<div class="row">
+				<div id="tokenexpiremodal-icon" clas="bg-info" style="margin:0 auto; text-align:center">
+					<i class="fa fa-exclamation-triangle " ></i>
+				</div>
+				
+				<div id="tokenexpiremodal-content"></div>
+				<div id="tokenexpiremodal-text"> Please re-login to continue with the appication. if you have unsaved changes, unfortunately they will not be saved.</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div id="GBL_loading">
+	<div class="GBL_loading" >
+			<div style="max-width:50%"><img src="/assets/images/103.GIF"></div>
+	</div>
+</div>
+	
+<script id="errorTemplate" type="text/x-kendo-template">
+	<div class="alert alert-danger">
+		<strong> <img  src="/assets/images/error-icon.png" /></strong>  #= message #		
+	</div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-success">
+		<strong> <img  src="/assets/images/success-icon.png" /></strong>  #= message #
+	</div>
+</script>
+
+<script id="infoTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-info" role="alert">
+		<strong> <img  src="/assets/images/info-icon.png" /></strong>  #= message #
+	</div>  	
+</script>
+
+
+<script type='text/javascript' src="/assets/plugins/jquery.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="/assets/plugins/bootstrap/js/tooltip.js"></script>
+<script type='text/javascript' src="/assets/js/metroJs.min.js"></script>
+<script type='text/javascript' src="/assets/js/material.min.js"></script>
+<script type='text/javascript' src="/assets/js/ripples.min.js"></script>
+<script type='text/javascript' src="/assets/js/modernizr.js"></script>
+<script type="text/javascript" src="/assets/js/KendoUI/kendo.all.min.js"></script>
+<script type="text/javascript" src="/assets/js/KendoUI/kendo.custom.js"></script>
+
+<script type='text/javascript' src="/assets/js/classie.js"></script>
+<script type='text/javascript' src="/assets/js/gnmenu.js"></script>
+
+<script type='text/javascript' src="/assets/js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/assets/js/commonFunctions.js"></script>
+<script src="/assets/js/tenantinfoClass.js"></script>
+<script type='text/javascript'>
+	var VarCurrentTenantInfo = new tenantinfoclass($.parseJSON('<%-JSON.stringify(VarCurrentTenantInfo)%>'));
+	var GblAppContextPath = '';
+	var GblAppRootPath = '';
+	var GblAppTheme = '';
+	
+	if($('#gn-menu').length > 0){
+		new gnMenu( document.getElementById( 'gn-menu' ) );
+	}
+	$(document).ready(function(){
+		$('.animate-panel').animatePanel();
+	 
+		$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+
+	});
+
+	function randOrd() {
+		return (Math.round(Math.random())-0.5); 
+	} 
+	$.material.init();
+		
+	
+	if ( navigator.userAgent.indexOf('Firefox') >= 0 || navigator.userAgent.indexOf('Chrome')>= 0 || navigator.userAgent.indexOf('Safari')>= 0) {
+		$(window).load(function() {
+					var klasses = [ 'pt-page-scaleUpDown'];
+					klasses.sort( randOrd );
+					$('.page-container').each(function(i, val) {
+						$(this).addClass(klasses[i]);
+					});
+			$(".page-container").css({"visibility":"visible"});
+			$(".se-pre-con").fadeOut("fast");
+		});
+	} else{
+	$(".page-container").css({"visibility":"visible"});
+		$(".se-pre-con").fadeOut("fast");
+	}
+	
+	initNotifications();
+	
+	// after successmessage delay time to redirect
+	var GBLDelayTime = 1000;
+	
+	var GBLcancel = 0;
+	function triggerFormClick(){
+		GBLcancel = 1;
+	}
+	
+	var formClicked = $("form").on("click", "input,select,textarea, div.k-multiselect",triggerFormClick);
+	var gridClicked = $("body").on("click", "input,select,textarea, div.k-multiselect",triggerFormClick);
+	var formSelected = $("form").on("change", "input,select,textarea, div.k-multiselect", triggerFormClick);
+
+	function FNLoading(){
+		var GBL_loading;
+		GBL_loading += "<div class='GBL_loading'>";
+		GBL_loading += "<div style='max-width:50%'><img src='images/loading32x32.gif'></div>";
+		GBL_loading += "</div>";
+	}
+
+	function FnConfirmYes(){
+		var gethiddenFrm = $("#hiddencancelFrm").val();
+		var gethiddenURL = $("#hiddencancel").val();
+		if(gethiddenFrm != ''){
+			$('#'+gethiddenFrm).submit();
+		} else {
+			FnRedirect(gethiddenURL,1000);
+		}
+	}
+	
+	function FnConfirmNo(){
+		$("#GBLModalcancel").modal('hide');	
+	}
+	
+	$.fn['animatePanel'] = function() {
+		 var element = $(this);
+		 var effect = $(this).data('effect');
+		 var delay = $(this).data('delay');
+		 var child = $(this).data('child');
+
+		 // Set default values for attrs
+		 if(!effect) { effect = 'zoomIn'};
+		 if(!delay) { delay = 0.5 } else { delay = delay / 10 };
+		 if(!child) { child = 'section.dc_gadgetoutercontainer .animateZoom'} else {child = "." + child};
+
+		 //Set defaul values for start animation and delay
+		 var startAnimation = 0;
+		 var start = Math.abs(delay) + startAnimation;
+
+
+		 var panel = element.find(child);
+		 panel.addClass('opacity-0');
+
+		 // Get all elements and add effect class
+		 panel = element.find(child);
+		 panel.addClass('animated-panel').addClass(effect);
+		 // Add delay for each child elements
+		 panel.each(function (i, elm) {
+
+			 start += delay;
+			 var rounded = Math.round(start * 10) / 10;
+			 $(elm).css('animation-delay', rounded + 's')
+			 // Remove opacity 0 after finish
+			 $(elm).removeClass('opacity-0');
+		 });
+	}
+
+	$(function(){
+		jQuery('img.svg').each(function(){
+			var $img = jQuery(this);
+			var imgID = $img.attr('id');
+			var imgClass = $img.attr('class');
+			var imgURL = $img.attr('src');
+		
+			jQuery.get(imgURL, function(data) {
+				// Get the SVG tag, ignore the rest
+				var $svg = jQuery(data).find('svg');
+		
+				// Add replaced image's ID to the new SVG
+				if(typeof imgID !== 'undefined') {
+					$svg = $svg.attr('id', imgID);
+				}
+				// Add replaced image's classes to the new SVG
+				if(typeof imgClass !== 'undefined') {
+					$svg = $svg.attr('class', imgClass+' replaced-svg');
+				}
+		
+				// Remove any invalid XML tags as per http://validator.w3.org
+				$svg = $svg.removeAttr('xmlns:a');
+				
+				// Check if the viewport is set, else we gonna set it if we can.
+				if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+					$svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+				}
+		
+				// Replace image with new SVG
+				$img.replaceWith($svg);
+		
+			}, 'xml');
+		
+		});
+		
+				
+	});
+
+</script>

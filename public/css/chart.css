@@ -1,0 +1,185 @@
+
+/************************* Common ***********************************/
+
+/* theme color change - bg background 
+
+
+.page-content{background-image:url('../images/bg/d1.jpg')!important;background-repeat: no-repeat!important;background-size: cover!important;}
+.outer-contentbox{padding: 10px;border: 0px;}
+.md-border-light{background-color: rgba(0,0,0,0.2);padding: 15px;}
+svg g > text{fill:#fff}
+.page-title{color:#fff}*/
+
+/* Theme changes */
+.page-content{background-repeat: no-repeat!important;background-size: cover!important;}
+.outer-contentbox{background:rgba(0,0,0,0.2);padding: 10px;border: 0px;box-shadow: 1px 2px 14px -5px rgba(0,0,0,0.5);}
+.md-border-light{background-color: rgba(255,255,255,0.8);padding: 15px;}
+svg g > text{fill:#000}
+/*.page-title,.outer-contentbox h3,#fillgauge1 + div,.md-deviceInnercount span{color:#000!important}*/
+ul#clientlist li a{color:#000!important}
+ ul#clientlist li{border-bottom: 1px solid rgba(0,0,0,0.2)!important}
+
+
+
+/* theme color change - plain background 
+.page-content{background:#F5F5F5}
+.outer-contentbox{background:rgba(255,255,255,0.9);box-shadow: 1px 2px 14px -5px rgba(0,0,0,0.5);padding: 10px;}
+h3,a{color:#000!important}
+.md-border-light{background-color: transparent!important;}
+ul#clientlist{border: 1px solid #4b4b4b;}
+.portlet {box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.0)!important;}
+svg g > text{fill:#000}
+.md-deviceInnercount{ color: #000!important;}
+*/
+#tenant_name{color:rgb(6, 131, 179);font-size: 18px;font-weight:normal;text-transform:capitalize}
+.md-border{border: 1px solid transparent;background-color: rgba(0,0,0,0.4);}
+.md-shadow {box-shadow: 1px 2px 14px -2px rgba(0,0,0,0.5);}
+
+.zeromargin{padding:0;margin:0px;}
+.borderradius{border-radius:5px;}
+	/*h3,a{color:#fff!important;text-shadow: 1px 0px 6px rgba(255,255,255,0.8);}*/
+.view-switch,h3,a{color:#fff}
+.view-switch{padding: 9px 25px 9px 9px;}
+.view-switch a{padding: 8px;margin: 1px;}
+.view-switch .fa{font-size:18px;color:#000}
+
+   .md-deviceInnercount{ color: #fff;}
+
+/********************* Device Dashboard ********************************/
+
+.md-deviceInnercount{
+position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+.md-deviceInnercount span{
+}
+
+		.device_tenantcnt,
+		.device_devicecnt,
+		.device_statuscnt{
+				  min-height: 130px;
+				display:inline-block;
+				width:100%;
+				overflow:hidden;
+				-webkit-transition: background 0.2s linear;
+				-moz-transition: background 0.5s linear;
+				-ms-transition: background 0.5s linear;
+				-o-transition: background 0.5s linear;
+				transition: background 0.2s linear;
+				position:relative;
+		}
+		.device_tenantcnt,.device_devicecnt,.device_statuscnt{
+				color:#fff;
+				padding-left:10px;
+				margin-top: 10px;
+		}	
+
+		.device_tenantcnt p,.device_devicecnt p,.device_statuscnt p{
+		color: #fff;
+			font-size: 42px;
+			float: right;
+			padding-right: 7%;
+			margin-top: 6%;
+			max-width: 111px;
+			text-overflow: ellipsis;
+			white-space: normal;
+			overflow: hidden;
+			max-width: 60%;
+			margin-bottom: 0px;
+		}
+		/*.device_tenantcnt{background-color: #f0b518 ;}*/
+		.device_devicecnt{background-color:#9069a1;}
+		.device_statuscnt{background-color: #f06292;}
+		
+		.device_tenantcnt{background: linear-gradient(to right, #fece02 , #d89900); /* Standard syntax */}
+		.device_devicecnt{background: linear-gradient(to right, #fe810b , #ff3b01); /* Standard syntax */}
+		.device_statuscnt{background: linear-gradient(to right, #23d730 , #129918); /* Standard syntax */}
+		
+		.device_devicecnt:after,
+		.device_tenantcnt:after,
+		.device_statuscnt:after
+		{
+			content: "";
+			background-color: rgba(0,0,0,0.2);
+			width: 100%;
+			position: absolute;
+			height: 20px;
+			bottom: 0px;
+			left: 0;
+		}
+		
+		.device_tenantcnt h3,.device_statuscnt h3,.device_devicecnt h3{
+			float: right;
+			clear: both;
+			margin: 0px;
+			padding-right: 20px;
+			font-size: 19px;
+			font-weight: 400;
+		}
+
+		 .clientlistblock {
+    	height: 490px;
+    	overflow-y: scroll;
+    }
+    
+    ul#clientlist {
+    	list-style-type:none;
+	    padding: 0;
+	    margin: 0 0px 0 10px;
+		height:100%;
+	}
+	
+	ul#clientlist li {
+    background-color: transparent;
+    padding: 9px 19px;
+    margin: 0px 1px;
+    width: 99%;
+    text-transform: capitalize;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+	color:#fff;
+	}
+	
+	ul#clientlist li a {
+		text-decoration: none;
+		cursor: pointer;
+		display: inline-block;
+		width: 100%;
+		color: #fff;
+	}
+	
+	ul#clientlist li a:hover {color:#fff;}
+	
+	ul#clientlist li:hover{
+	background-color:#5fa9c6;
+	text-transform: capitalize;
+		color:#fff;
+		}
+	ul#clientlist li.active {
+		background-color: #0683b3;
+		text-transform: capitalize;
+		color:#fff;
+	}
+	ul.durationlist li a {color: #000;}
+	
+	ul#clientlist li.active a{
+    color: #fff;
+    font-weight: bold;
+}
+
+.client_summary_wrapper {margin-top: 15px;}
+
+
+	.device_tenantcnt .fa,
+	.device_devicecnt .fa,
+	.device_statuscnt .fa{
+	font-size: 115px!important;
+    position: absolute;
+    bottom: 34px;
+    left: -17px;
+	opacity: 0.5;
+	}
+
+
+#devicetypechart{display: inline-block;width: 220px;height: 300px;margin: 15px 110px!important;}

@@ -1,0 +1,215 @@
+{
+	"server" : {
+					"host" : "10.234.31.152",
+					"port" : "8282",
+					"scheme" : "http"
+	},
+	"templates" : {
+		"deviceAssign" : "Device",
+		"tenant" : "DefaultTenant",
+		"zone" : "Zone",
+		"emirate" : "Emirate",
+		"country" : "Country",
+		"resetpassword" : "ResetPassword",
+		"pointtemplate" : "Point",
+		"asset" : "Asset",
+		"geofence" : "Geofence",
+		"route" : "Route",
+		"polygon" : "Polygon",
+		"circle" : "Circle"
+	},
+	"clienttemplates" : "ResetPassword,TenantAdminUser,Point,Asset,Geofence,Route,Polygon,Circle,UnRecognizedDevice,Poi,PoiType,Tag,AssetType,Geotag",
+	"clientresources" : "/galaxy-um/1.0.0/resources?domain_name={domain}",
+	"roles" : {
+		"create" : "/galaxy-um/1.0.0/roles",
+		"list" : "/galaxy-um/1.0.0/roles?domain_name={domain}",
+		"resource" : "/galaxy-um/1.0.0/resources?domain_name={domain}",
+		"permissions" : "/galaxy-um/1.0.0/resources/{resource_name}/permissions?domain_name={domain}",
+		"view" : "/galaxy-um/1.0.0/roles/{role_name}?domain_name={domain}",
+		"update" : "/galaxy-um/1.0.0/roles/{role_name}?domain_name={domain}"
+	},
+	"clients" : {
+		"create" : "/galaxy-tm/1.0.0/tenants",
+		"list" : "/galaxy-tm/1.0.0/tenants/?domain_name={domain}",
+		"nameunique" : "/tenants/1.0.0/tenants/validate",
+		"view" : "/galaxy-tm/1.0.0/tenants/{tenant_id}/?domain_name={domain}",
+		"update" : "/galaxy-tm/1.0.0/tenants/{tenant_id}/?domain_name={domain}",
+		"sendemail" : "/galaxy-tm/1.0.0/tenants/admin/email",
+		"createadmin" : "/galaxy-tm/1.0.0/tenants/admin",
+		"domainunique" : "/tenants/1.0.0/tenants/validate",
+		"childrencount" : "/tenants/1.0.0/tenants/children/count",
+		"listing" : "/tenants/1.0.0/tenants/list",		
+		"deviceslist" : "/galaxy-dm/1.0.0/devices/list",
+		"featureslist" : "/tenants/1.0.0/tenants/features?domain={domain}"		
+	},
+	"users" : {
+		"create" : "/galaxy-um/1.0.0/users",
+		"view" : "/galaxy-um/1.0.0/users/{user_name}?domain_name={domain}",
+		"resetpassword" : "/galaxy-um/1.0.0/users/reset_password",
+		"list" : "/galaxy-um/1.0.0/users?domain_name={domain}",
+		"usernameunique" : "/users/1.0.0/users/validate",
+		"update" : "/galaxy-um/1.0.0/users/{user_name}?domain_name={domain}",
+		"delete" : "/galaxy-um/1.0.0/users/{user_name}?domain_name={domain}",
+		"forgotpassword" : "/galaxy-um/1.0.0/users/forgot_password",
+		"changepassword" : "/galaxy-um/1.0.0/users/change_password"
+	},
+	"device" : {
+		"list" : "/galaxy-dm/1.0.0/devices/list",
+		"configuration" : "/saffron/1.0.0/devices/{source_id}/configurations",
+		"create" : "/galaxy-dm/1.0.0/devices",								
+		"makes": "/saffron/1.0.0/system/makes",
+		"networkprotocols": "/saffron/1.0.0/system/network_protocols",
+		"tags": "/saffron/1.0.0/device_tags",
+		"types":"/saffron/1.0.0/system/makes/{make_name}/device_types",
+		"models":"/saffron/1.0.0/system/models",
+		"protocols":"/saffron/1.0.0/system/protocols",
+		"versions":"/saffron/1.0.0/system/protocols/versions",
+		"configtemplates":"/saffron/1.0.0/config_templates/all",
+		"validate":"/markers/1.0.0/markers/validate",
+		"isexist":"/saffron/1.0.0/ds/{datasource}/isexist",
+		"update" : "/galaxy-dm/1.0.0/devices/{sourceId}",
+		"view" : "/galaxy-dm/1.0.0/devices/{identifier}",
+		"assign":"/galaxy-dm/1.0.0/devices/assign",								
+		"search":"/markers/1.0.0/markers/fieldvalue/search",								
+		"assignsearch" : "/hierarchy/1.0.0/hierarchy/markers/assign",
+		"g2021commands" : "/saffron/1.0.0/g2021/commands/{source_id}",
+		"queuedcommands" : "/saffron/1.0.0/write_back/{source_id}/queued_commands",
+		"latestdevice" : "/saffron/1.0.0/data/{source_id}/latest",
+		"datasourcesubscribe" : "/saffron/1.0.0/ds/subscribe",
+		"devicescount" : "/markers/1.0.0/markers/count",
+		"activedevicescount" : "/markers/1.0.0/markers/count",
+		"find" : "/saffron/1.0.0/data/find",
+		"ownedlist" : "/galaxy-dm/1.0.0/devices/owned/list",
+		"status" : "/saffron/1.0.0/device_activity/status",
+		"claim" : "/galaxy-dm/1.0.0/devices/claim",
+		"assignbulk" : "/galaxy-dm/1.0.0/devices/assignbulk",
+		"mqttdatasourcesubscribe" : "/saffron/1.0.0/ds/subscribe?websocketclient=MQTT"
+	},
+	"websocket" : {
+		"weborb":"/saffron/1.0.0/ds/subscribe",
+		"mqtt": "/saffron/1.0.0/ds/subscribe?websocketclient=MQTT"
+	},
+	"claim" : {
+		"unsubscribed":"/saffron/1.0.0/devices/unsubscribed",
+		"claimdevice": "/galaxy-dm/1.0.0/devices/{sourceId}/claim"
+	},
+	"common" : {
+		"filterlist" : "/markers/1.0.0/markers/list/filter",
+		"hierarchy" : "/markers/1.0.0/markers/children",
+		"find" : "/markers/1.0.0/markers/find"
+	},
+	"hierarchy" : {
+		"attachparent" : "/hierarchy/1.0.0/hierarchy/attach/parents",
+		"children" : "/hierarchy/1.0.0/hierarchy/children",
+		"attachchildren" : "/hierarchy/1.0.0/hierarchy/attach/children",
+		"immediatechildren" : "/hierarchy/1.0.0/hierarchy/children/immediate"
+	},
+	"assets" : {
+		"filterlist" : "/markers/1.0.0/markers/list/filter",
+		"hierarchy" : "/markers/1.0.0/markers/children",
+		"find" : "/markers/1.0.0/markers/find",
+		"findhistory" : "/saffron/1.0.0/data/find",
+		"monitoring" : "/galaxy-dm/1.0.0/devices/location",
+		"searchdevice" : "/galaxy-dm/1.0.0/devices/search/list"
+	},
+	"equipments" : {
+		"template" : {
+			"create" : "/galaxy-am/1.0.0/assetType",
+			"list" : "/galaxy-am/1.0.0/assetType",
+			"view" : "/galaxy-am/1.0.0/assetType/{asset_type_name}"
+		},
+		"asset" : {
+			"create" : "/galaxy-am/1.0.0/assets",
+			"list" : "/galaxy-am/1.0.0/assets",
+			"view" : "/galaxy-am/1.0.0/assets/find",
+			"update" : "/galaxy-am/1.0.0/assets/{asset_name}",
+			"pointsmapping" : "/galaxy-am/1.0.0/assets/points",
+			"equipidunique" : "/markers/1.0.0/markers/validate",									
+			"devicepoints" : "/galaxy-am/1.0.0/assets/device/points",									
+			"latestdevice" : "/galaxy-am/1.0.0/assets/data/latest",
+			"find" : "/galaxy-am/1.0.0/assets/find"
+		}
+	},
+	"ccd" : {
+		"import" : {
+			"equipmentslist" : "/ccd/1.0.0/equipment/tenant/{tenant_domain}/findall",
+			"addequipments" : "/ccd/1.0.0/equipment",
+			"importedequip" : "/ccd/1.0.0/equipment/findall"
+		},
+		"contact" : {
+			"create" : "/ccd/1.0.0/contacts",
+			"list" : "/ccd/1.0.0/contacts/findall",
+			"attachequip" : "/ccd/1.0.0/contacts/attach/equipments",
+			"equipments" : "/ccd/1.0.0/contacts/{contact_id}/equipments"
+		},
+		"faults" : {
+			"findcode" : "/ccd/1.0.0/faultEvent/find",
+			"findallfalts" :"/ccd/1.0.0/faultEvent/tenant/{tenant_id}/findall",
+			"findfaultdetails" :"/ccd/1.0.0/receiveData/{fault_event_id}/response" 
+		}
+	},
+	"alarm" : {
+		"history" : "/galaxy-dm/1.0.0/devices/alarms/history/{domain_name}/{start_date}/{end_date}",
+		"latestalarm" : "/galaxy-dm/1.0.0/devices/alarms/{domain_name}",
+		"definitionlist" : "/galaxy-alarmconfig/1.0.0/threshold/list/{assetName}",
+		"definitioncreate" : "/galaxy-alarmconfig/1.0.0/threshold"
+	},
+	"geofence" : {
+		"create" : "/geo-services/1.0.0/geofence",
+		"list" : "/geo-services/1.0.0/geofence/list?domain_name={domain}",
+		"delete" : "/geo-services/1.0.0/geofence/delete",
+		"view" : "/geo-services/1.0.0/geofence/find",
+		"update" : "/geo-services/1.0.0/geofence",
+		"nameunique" : "/markers/1.0.0/markers/validate"
+	},
+	"tags" : {
+		"geotags" : {
+			"create" : "/geo-services/1.0.0/geotags",
+			"find" :   "/geo-services/1.0.0/geotags/find",
+			"update" : "/geo-services/1.0.0/geotags"
+		},
+		"nametags" : {
+			"create"  : "/galaxy-tags/1.0.0/tags",
+			"list"    : "/galaxy-tags/1.0.0/tags/list",
+			"view"    : "/galaxy-tags/1.0.0/tags/find",
+			"templatemap" : "/galaxy-tags/1.0.0/tags/subjects",
+			"fetchbytype" : "/galaxy-tags/1.0.0/tags/{tag_type}",			
+			"fetchall" : "/galaxy-tags/1.0.0/tags/entities",
+			"maptags" : "/galaxy-tags/1.0.0/tags/actors",
+			"fetchmappedtemplates" : "/galaxy-tags/1.0.0/tags/subjects/templates",			
+			"template": {
+				"create": "/galaxy-tags/1.0.0/tagTypes",
+				"list"  : "/galaxy-tags/1.0.0/tagTypes",
+				"view"  : "/galaxy-tags/1.0.0/tagTypes/{tag_type_name}"
+			}
+		}
+	},
+	"pointofinterest":{
+		"template" : {
+				"create" : "/galaxy-poi/1.0.0/poiType",
+				"list" : "/galaxy-poi/1.0.0/poiType",
+				"view" : "/galaxy-poi/1.0.0/poiType/{poi_type_name}"				
+			},
+		"poi" : {
+			"create" : "/galaxy-poi/1.0.0/poi",
+			"list" : "/galaxy-poi/1.0.0/poi",
+			"view" : "/galaxy-poi/1.0.0/poi/find",
+			"update" : "/galaxy-poi/1.0.0/poi/{poi_name}",
+			"delete" : "/galaxy-poi/1.0.0/poi/delete",
+			"find" : "/galaxy-am/1.0.0/poi/find"
+		
+		}
+	},
+	"confTemplates" : {
+		"protocolpoints" : "/saffron/1.0.0/system/protocols/points",
+		"physicalquantity" : "/saffron/1.0.0/phy_quantity/all",
+		"getalldatatype" : "/saffron/1.0.0/system/data_types",
+		"getallunits" : "/saffron/1.0.0/units/",
+		"create" : "/saffron/1.0.0/config_templates",
+		"list" : "/saffron/1.0.0/config_templates/all",
+		"delete" : "/geo-services/1.0.0/geofence/delete",
+		"view" : "/saffron/1.0.0/config_templates/{template_name}",
+		"update" : "/saffron/1.0.0/config_templates",
+		"nameunique" : "/markers/1.0.0/markers/validate"
+	}
+}

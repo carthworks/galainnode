@@ -1,0 +1,263 @@
+		<% include ../portal-header %>
+		<style type="text/css">
+#grid-view .k-grid-header .k-header {
+			background-color: #f44336;
+		}
+
+		#grid-view .k-header a.k-link, .k-grid-header th{
+			color: #000 !important;
+		}
+
+		.alert-danger {
+			background-color: #f2dede;
+			border-color: #ebccd1;
+			color: #a94442;
+		}
+		
+		.form-control-custom {
+			height: 20px;
+			padding: 6px 12px;
+			font-size: 14px;
+			color: #555;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			width: 85%;
+		}
+		
+		.diviceactions a {
+			margin: 2px;
+		}
+		
+		.k-grid-norecords {
+				text-align: center;
+				margin: 6% 0 0 0;
+				color: #f44336 !important;
+			}
+		.k-header.k-grid-toolbar {
+			background: transparent;
+		}
+		
+		.device_tenantcnt,
+		.device_devicecnt,
+		.device_statuscnt{
+				  min-height: 130px;
+				display:inline-block;
+				width:100%;
+				overflow:hidden;
+				-webkit-transition: background 0.2s linear;
+				-moz-transition: background 0.5s linear;
+				-ms-transition: background 0.5s linear;
+				-o-transition: background 0.5s linear;
+				transition: background 0.2s linear;
+		}
+		.device_tenantcnt,.device_devicecnt,.device_statuscnt{
+				color:#fff;
+				padding-left:10px;
+				margin-top: 10px;
+		}	
+
+		.device_tenantcnt p,.device_devicecnt p,.device_statuscnt p{
+		color: #fff;
+			font-size: 42px;
+			float: right;
+			padding-right: 10%;
+			margin-top: 6%;
+			max-width: 111px;
+			text-overflow: ellipsis;
+			white-space: normal;
+			overflow: hidden;
+			max-width: 60%;
+		}
+		.device_tenantcnt{background-color: #f0b518 ;}
+		.device_devicecnt{background-color:#9069a1;}
+		.device_statuscnt{background-color: #f06292;}
+		.md-shadow {    box-shadow: 1px 2px 14px -2px rgba(0,0,0,0.5);}
+		 .clientlistblock {
+    	height: 350px;
+    	overflow-y: scroll;
+    }
+    
+   .view-switch,h3,a{color:#fff}
+	.view-switch
+	{
+		margin: 0px 25px -18px 2px;
+		padding-right: 3px;
+	}
+	.view-switch a{
+	padding: 10px 10px 10px 9px;
+    margin: 0px;
+    display: inline-block;
+	}
+	.view-switch .fa{font-size:16px;color:#fff}
+
+	#tenantSection {
+		background-color: #F3F3F3;
+		box-shadow: -8px -3px 17px -10px #797979 inset;
+	}
+	
+	.leftbar-clientlist{
+		padding: 5px 10px;
+	}
+	
+	.search-client{
+	    height: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 85%;
+	margin-bottom:15px;
+	}
+	
+	span.k-in > span.highlight {
+    background: #7EA700;
+    color: #ffffff;
+    border: 1px solid green;
+    padding: 1px;
+}
+
+span.k-in > span.highlight {
+    background:orange
+}
+	</style>
+	</head>
+<body class="page-md page-header-fixed page-quick-sidebar-over-content page-footer-fixed  page-full-width">
+	<div class="se-pre-con"></div>
+	<% include ../global-header %>
+	
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="gapp-header">
+				<% include ../leftnavigation %>
+				<h3 class="page-title">	Device Management  </h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li>
+							<i class="fa fa-home"></i>
+							<a href="/" />Home</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						<li>
+							<a href="Javascript:void(0)">device</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="page-content">
+				<!-- BEGIN PAGE CONTENT-->
+					<div class="row">
+						<div class="col-md-12">	
+											
+						
+							<div class="portlet light bordered">
+								<div class="portlet-title">
+									<div class="caption font-red-sunglo">
+										<i class="pageheadericon pageheader-clienticon"></i>
+										<span class="caption-subject bold uppercase">Device</span>
+									</div>
+									<div class="actions">										
+										<div class="btn-group">
+											<a href="/device/assign"  class="btn btn-raised green"> Assign Device</a>
+										</div>										
+										<div class="btn-group">
+											<a href="/device/create" class="btn green"> +  Create Device</a>							
+										</div>										
+									</div>
+								</div>
+								<div class="portlet-body">
+									<div id="splitter" style="height: 495px;">
+									<div id="tenantSection">
+										<div class="leftbar-clientlist">
+											<input id="treeViewSearchInput" class="search-client" placeholder="Search Client"></input>
+											<div id="gapp-clients-list"></div>
+										</div>
+									</div>
+									<div id="deviceSection">
+										<div id="gapp-device-list"></div>
+									</div>
+								</div>
+								
+								
+
+									<form id="gapp-client-view" role="form" action="/device/view" name="gapp-client-view" method="post">
+										<input type="hidden" id="client_id" name="client_id" />
+									</form>
+									<form id="gapp-client-sendemail" role="form" action="/device/sendemail" name="gapp-client-sendemail" method="post">
+										<input type="hidden" id="client_domain" name="client_domain" />
+									</form>
+									<form id="gapp-client-home" role="form" action="/clienthome" name="gapp-client-home" method="post">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+		</div>
+		<!-- END CONTENT -->
+	</div>
+	<!-- END CONTAINER -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="createAdminNotification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Create admin</h4>
+		  </div>
+		  <div class="modal-body">
+						 Please select a row from the grid to create admin user
+		  </div>
+		  <div class="modal-footer">     
+				   <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">OK</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<!----  client confirmation model popup  --->	
+	<div id="clientConfirmation" class="modal fade" tabindex="-1" aria-hidden="true">
+	
+		<div class="modal-dialog modal-xs">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+					<h4 class="modal-title">Confirm</h4>
+				</div>
+				<div class="modal-body">
+					<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+						<div class="row">
+							<div class="col-md-12">														
+								<p>Already you are in Client session.Do you want to continue?</p>							
+							</div>					
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" data-dismiss="modal" class="btn  btn-raised" onclick="FnClientConfirmNo()"><i class="icon-close icons" aria-hidden="true"></i>No</button>
+					<button type="button"  id="submitBackBtn" class="btn btn-raised btn-danger" value="yes" onclick="FnClientConfirmYes()"><i class="icon-check icons" aria-hidden="true"></i>Yes</button>
+					<div class="modal-footer">	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!----  client confirmation model popup  --->
+	
+	<% include ../global-footer %>
+	<% include ../portal-footer %>
+	
+<script type="text/javascript">
+	var VarListClientsUrl = '<%=APICONF.clients.list%>';
+	var ObjPageAccess = '';
+</script>
+<script type="text/javascript" src="/assets/js/device/list.js"></script>
+<script src="/assets/js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	
+</body>
+</html>

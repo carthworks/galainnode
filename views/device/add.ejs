@@ -1,0 +1,291 @@
+<% include ../portal-header %>
+<link rel="stylesheet" type="text/css" href="/assets/plugins/multi-select-master/css/multi-select.css" />
+<style type="text/css">		
+		.portlet-title {    min-height: 12px !important; padding:0;}
+		.md-radio.has-error label > .check {
+			  background: #26A69A !important;
+			}
+		.md-radio.has-error label > .box {
+			border-color: #26A69A !important;
+			}
+		.form-group.form-md-line-input .help-block{left: 0;}
+		
+		div.fileUpload {
+			position: relative;
+			
+			margin: 10px;
+			background-image: url("/assets/images/client_placeholder.png");
+			background-color: #FFF;
+			
+			/*
+			overflow: hidden;
+			background-size: 200px 200px;
+			background-color: #BDBDBD;
+			height: 200px;
+			width: 200px;
+			text-align: center;
+			*/
+			background-size: 100%;
+			background-repeat: no-repeat;
+			
+		}
+		div.fileUpload input.upload {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+			cursor: pointer;
+			opacity: 0;
+			filter: alpha(opacity=0);
+			height: 100%;
+			text-align: center;
+			    z-index: 99;
+		}
+		
+	  div.fileUpload input.upload + img  {
+		/*position: absolute;*/
+		width:100%;
+		top: 0;
+		left: 0;
+		z-index: 9;
+		}
+			.custom-span{  font-family: Arial;
+		font-weight: bold;
+		font-size: 25px;
+		color: #fff;
+		/* padding: 10px; */
+		float: left;
+	}
+	#uploadFile{border: none;margin-left: 10px; width: 200px;}
+	.custom-para{    font-family: arial;
+    /* font-weight: bold; */
+    font-size: 13px;
+    color: #fff;
+    text-align: left;
+    float: left;
+    margin: 0;
+    padding: 0px 6px;}
+		
+	.upload-addicon	{
+	    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    /* height: 40px; */
+    width: 100%;
+    z-index: 99;
+    left: 0;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.7);
+    height: 32px;
+    line-height: 30px;
+    padding: 0px 10px;
+	}
+		
+	/**/	
+	
+	
+	</style>
+	
+	</head>
+<body class="page-md page-header-fixed page-quick-sidebar-over-content page-footer-fixed  page-full-width">
+	<div class="se-pre-con"></div>
+	<% include ../global-header %>
+	<!-- BEGIN CONTAINER -->
+	<div class="page-container">
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="gapp-header">
+				<% include ../leftnavigation %>
+				<h3 class="page-title">	Client Management  </h3>
+				<div class="page-bar">
+					<ul class="page-breadcrumb">
+						<li>
+							<i class="fa fa-home"></i>
+							<a href="Javascript:void(0)" onclick="FnBreadCrumbHome()">Home</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						<li>
+							<a href="Javascript:void(0)" onclick="FnNavigateClientList()">Clients</a>
+							<i class="fa fa-angle-right"></i>
+						</li>
+						<li>
+							<a href="Javascript:void(0)" class="pageTitleTxt"> Create Client </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="page-content">
+				<!-- BEGIN PAGE CONTENT-->
+					<div class="row">
+						<div class="col-md-12">						
+							<div class="portlet light bordered animated fadeInUp dark">
+								<div class="portlet-title">
+									<div class="caption font-red-sunglo">
+										<i class="pageheadericon pageheader-clienticon"></i>
+										<span class="caption-subject bold uppercase pageTitleTxt"> Create Client </span>
+									</div>
+									
+									<div class="actions">									
+										<div class="form-actions">
+											
+											<button type="button" class="btn btn-raised default " name="gapp-client-cancel" id="gapp-client-cancel" onclick="FnCancelClient()" tabindex="9"><i class="icon-close icons" aria-hidden="true"></i>Cancel</button>
+											<button type="button" class="btn  btn-raised btn-danger ladda-button" name="gapp-client-save" id="gapp-client-save" data-style="slide-up" data-size="l" onclick="return FnSaveClient()" tabindex="8">
+											<span class="ladda-label"><i class="icon-check icons" aria-hidden="true"></i>Save</span></button>
+									
+										</div>
+									</div>
+								</div>
+								<div class="portlet-body form">
+									<form name="gapp-addclient-form" id="gapp-addclient-form" method="post" role="form" autocomplete="off" enctype="multipart/form-data">
+										<div class="form-body">
+											<div class="col-md-2 col-sm-4 col-xs-12">
+												<!-- BEGIN PROFILE IMAGE UPLOAD -->
+												<div class="form-group">
+													<div class="fileUpload">
+														<div class="upload-addicon">
+															<span class="custom-span">+</span>
+															<p class="custom-para">Add Image</p>
+														</div>
+														<input type="file" name="client-logo" id="client-logo" class="upload" accept="image/*" />
+														
+															<img src="" id="client-logo-preview" width="200" height="200"  />
+														
+													</div>
+												</div>
+												<!-- END PROFILE IMAGE UPLOAD -->
+											</div>
+											<div class="col-md-5">			
+												<!-- BEGIN CLIENTNAME -->													
+												<div class="form-group form-md-line-input">
+													<input type="text" class="form-control" name="tenantName" id="tenantName" autofocus tabindex="1" required data-required-msg="Client Name not specified" onkeypress="return FnAllowAlphaNumericOnly(event)" tabindex="1" />							
+													<label class="col-md-12 control-label" for="form_control_1">Client name 
+														<span class="required" aria-required="true">* </span>
+													</label>
+													<div class="form-control-focus"></div>
+												</div>													
+												<!-- END CLIENTNAME -->		
+																
+												<!-- BEGIN FIRSTNAME -->													
+												<div class="form-group form-md-line-input">
+													<input type="text" class="form-control" name="firstName" id="firstName" required data-required-msg="First Name not specified" tabindex="2" />									
+													<label class="col-md-12 control-label" for="form_control_1">First name
+															<span class="required" aria-required="true">* </span>
+													</label>
+													<div class="form-control-focus"></div>
+												</div>													
+												<!-- END FIRSTNAME -->
+													
+												<!-- BEGIN LASTNAME -->
+												<div class="form-group form-md-line-input">
+													<input type="text" class="form-control" name="lastName" id="lastName" required data-required-msg="Last Name not specified" tabindex="3" />									
+													<label class="col-md-12 control-label" for="form_control_1">Last name<span class="required" aria-required="true">* </span></label>
+													<div class="form-control-focus"></div>
+												</div>
+												<!-- END LASTNAME -->
+												<!-- BEGIN EMAILID -->
+												<div class="form-group form-md-line-input">
+													<div class="input-group">
+														<input type="email" class="form-control" placeholder="" name="contactEmail" id="contactEmail" required data-required-msg="Contact Email id not specified" tabindex="4" data-email-msg="Invalid email id" />												
+														<label class="col-md-12 control-label" for="form_control_1">Email id
+															<span class="required" aria-required="true">* </span>
+														</label>
+														<span class="input-group-addon">
+															<i class="fa fa-envelope"></i>
+														</span>
+													</div>
+												</div>	
+												<!-- END EMAILID -->
+												
+												<!-- BEGIN CLIENTID -->													
+												<div class="form-group form-md-line-input">
+													<input type="text" class="form-control" name="tenantId" id="tenantId" autofocus tabindex="5" required data-required-msg="Client Id not specified" onkeypress="return FnAllowAlphaNumericSmallcaseOnly(event)"  data-available data-available-url="<%=APICONF.clients.nameunique%>" data-available-msg="Client Id already exists" />							
+													<label class="col-md-12 control-label" for="form_control_1">Client id 
+														<span class="required" aria-required="true">* </span>
+													</label>
+													<div class="form-control-focus"></div>
+												</div>													
+												<!-- END CLIENTID -->
+												
+															
+											</div>									
+											<div class="col-md-5">
+															
+												<!-- BEGIN FEATURES -->
+												<div class="form-group form-md-line-input">
+													
+													
+													<select name="tenantFeatures"  class="form-control" id="tenantFeatures" multiple="multiple" required data-required-msg="Feature not specified" tabindex="6"></select>
+													<label class="col-md-12 control-label" for="form_control_1">Features<span class="required" aria-required="true">* </span></label>
+													
+													<div class="form-control-focus"></div>
+												</div>
+												<!-- END FEATURES -->	
+
+												<!-- BEGIN STATUS -->													
+												<div class="form-group form-md-line-input">
+													<label class="col-md-2 control-label" for="form_control_1">Status</label>
+													<div class="col-md-10">
+														<div class="md-radio-inline">										
+															<div class="md-radio has-error">
+																<input type="radio" id="statusName_active" name="statusName" class="md-radiobtn" checked value="ACTIVE" tabindex="7">
+																<label for="statusName_active" style="color:#26A69A">
+																<span></span>
+																<span class="check"></span>
+																<span class="box"></span>
+																Active </label>
+															</div>
+															<div class="md-radio has-warning">
+																<input type="radio" id="statusName_inactive" name="statusName" class="md-radiobtn green" value="INACTIVE" tabindex="8">
+																<label for="statusName_inactive" >
+																<span></span>
+																<span class="check"></span>
+																<span class="box"></span>
+																In Active</label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- END STATUS -->							
+											</div>
+											
+										</div>
+										<div class="clearfix"></div>
+										<input type="hidden" name="client_id" id="client_id" value="" />
+									</form>
+									
+									
+										<div class="clearfix"></div>	
+									<!-- End Tag Template -->
+																	
+								</div>
+							</div>	
+						</div>
+					</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+		</div>
+		<!-- END CONTENT -->
+		
+	</div>
+	
+	<% include ../global-footer %>
+	<% include ../portal-footer %>
+	
+	<script type="text/javascript">		
+		var VarCreateClientUrl   = '<%=APICONF.clients.create%>';
+		var VarViewClientUrl     = '<%=APICONF.clients.view%>';
+		var VarUpdateClientUrl   = '<%=APICONF.clients.update%>';		
+		var VarClientTemplates   = '<%=APICONF.clienttemplates%>';
+		var VarListFeaturesUrl = '<%=APICONF.clients.featureslist%>';
+	</script>
+	<script type='text/javascript' src="/assets/plugins/jquery.form.js"></script>
+	<script type='text/javascript' src="/assets/plugins/multi-select-master/js/jquery.multi-select.js"></script>	
+	<script type="text/javascript" src="/assets/js/clients/add.js"></script>
+	
+</body>
+</html>
+	
+	

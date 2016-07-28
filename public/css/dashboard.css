@@ -1,0 +1,269 @@
+html,
+body {
+padding-top: 0px;
+height: 100%;
+/* The html and body elements cannot have any padding or margin. */
+}
+
+#ues-dasboard-container {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -33px;
+		/*margin: 27px auto -60px;*/
+      }
+	  
+/* Set the fixed height of the footer here */
+#push{
+	height: 60px;
+	margin: 0;
+	padding: 20px 0 0 0;
+}
+
+
+footer {
+	height: 60px;
+	margin: 0;
+	    overflow: hidden;
+}
+
+.dashboard-header{background-color:#204562; padding:10px 0px;}
+.dashboard-menu{background-color:#315c7c}
+.dashboard-menu ul li > a{padding:6px 10px}
+.dashboard-usersettings{margin-right:15px;}
+
+.dashboard-usersettings {
+    /* top: 0; */
+    /* right: 0; */
+    margin: 6px 15px 0 0;
+    /* position: fixed; */
+    float: left;
+    /* background: cyan; */
+    width: 100%;
+    /* margin: 0 auto; */
+    /* text-align: center; */
+    position: relative;
+}
+
+ul.nav.navbar-nav.navbar-right {
+    /* background: aqua; */
+    margin: 0 auto;
+    /* padding: 12px 0 12px 0; */
+    float: left;
+}
+
+.dshboard-body{margin-top: 10px;}
+header section a,nav a{color:#fff!important}
+.dashboard-logo{
+	width: auto;
+	min-width: auto;
+	max-width: 250px;
+	padding-right: 10px;
+	height: 75px;
+	height: 26px;
+	padding-bottom:5px;
+	/*background-color:#FFFFFF;*/
+}
+
+.dashboard-logo img{
+width:auto;
+height:100%;}
+
+.list-inline {
+	margin: 10px 0 0 0;
+}
+
+/*.modal-dialog {
+	margin: 6% auto;
+    width: 100%;
+    height: 100%;
+}*/
+
+.modal-content{
+	position: relative;
+    min-height: 80%;
+}
+
+.ues-component-box.ues-gadget-maximize {
+	position:static;
+	width:100%;
+}
+
+
+.footer_powertxt {
+	font-size: 13px;
+    color: #FFFFFF;
+    /*padding: 24px 20px;*/
+    position: relative;
+	top:20px;
+	right:8px;
+}
+
+.footer_pacificlogo {
+    background-image: url(../images/footerright.png);
+    background-repeat: no-repeat;
+    width: 67px;
+    height: 52px;
+    display: inline-block;
+    float: right;
+    /* border: 1px solid #bea018; */
+    position: relative;
+    top: 9px;
+	background-color: #FFFFFF;
+}
+
+@media (max-width: 320px) {
+
+.footer_powertxt {
+  
+    top: 8px;
+  
+}
+
+}
+
+
+
+
+@media only screen and (max-width: 500px) {
+    #iframepopup {
+        height:auto !important;
+    }
+	
+	.breadcrum{
+		   top: 30px;
+    left: -93px;
+	}
+
+}
+
+
+
+    /* --------------------------------------------------------
+        Template Blur Skins for Desktop
+    -----------------------------------------------------------*/
+    [id="db-skin"] {
+        background-size: 100% 100%;
+        background-attachment: fixed;
+    }
+	
+	.db-blur-sunset {
+        background-image: url(../images/dashboard-skin/sunset.jpg);
+    }
+	
+	.db-blur-violate {
+        background-image: url(../images/dashboard-skin/violate.jpg);
+    }
+	
+	.db-blur-night {
+        background-image: url(../images/dashboard-skin/night.jpg);
+    }
+	
+	.db-blur-yellow {
+        background-image: url(../images/dashboard-skin/yellow.jpg);
+    }
+	
+	.db-blur-ocean {
+        background-image: url(../images/dashboard-skin/ocean.jpg);
+    }
+	
+	.db-blur-dcd {
+        background-image: url(../images/dashboard-skin/dcd.jpg);
+    }
+	
+	.db-blur-avocado1 {
+        background-image: url(../images/dashboard-skin/avocado.jpg);
+    }
+	
+	
+	
+    
+    /* Sidebar */
+    .side-menu > li > a:hover, .side-menu > li.active > a, .side-menu > li > a.active:hover, .side-menu > li.hovered > a {
+        background-color: rgba(0,0,0,0.95);
+        color: #fff;
+        opacity: 1;
+    }
+
+    
+    .profile-menu > li i {
+        position: absolute;
+        top: 8px;
+        color: #fff;
+    }
+    
+    .profile-menu > li i.right {
+        right: -30px;
+    }
+       
+    .profile-menu > li i.left {
+        left: -30px;
+    }
+    
+    .profile-menu > li:hover i.right {
+        right: 15px;
+    }
+    
+    .profile-menu > li:hover i.left {
+        left: 15px;
+    }
+
+    /* Common */
+    .tile , .tile-dark, .tile-title, .table th {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+
+
+	.page-welcome{padding:20px 0 0 0 ; padding:0;}
+	
+	.page-header.navbar {
+		width: 100%;
+		margin: 0;
+		border: 0;
+		padding: 0;
+		/* height: 46px; */
+		min-height: 60px;
+		filter: none;
+		background-image: none;
+		background-color: #f44336;
+		border-bottom: 1px solid #560A04;
+	}
+	
+	.page-content {   
+    margin-top: 0px;
+    min-height: 600px;
+    padding: 35px 20px 10px 20px;
+	
+}
+
+.page-toolbar{margin:86px  0 0 0; width: 100%; }
+
+.page-bar{background:none; padding: 0;  margin: 0;}
+
+.page-title {
+    padding: 0px;
+    font-size: 28px;
+    letter-spacing: -1px;
+    display: block;
+    color: #666;
+    /* margin: 0px 0px 15px 0px; */
+    font-weight: 300;
+    float: left;    padding: 0 0 0 20px;
+}
+
+
+.welcome-msg {
+    padding: 12px 0 0 0;
+}
+.welcome-name {
+    text-transform: capitalize;
+}
+.dbtitle {
+    height: 50px;
+    font-size: 20px;
+    line-height: 52px;
+    color: #FFFFFF;
+    margin-top: 25px;
+	text-transform: capitalize;
+}
